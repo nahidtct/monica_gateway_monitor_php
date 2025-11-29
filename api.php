@@ -33,20 +33,20 @@ switch ($action) {
         
     case 'channel_vars':
         $channel = urlencode($_GET['channel'] ?? '');
-        $response = @file_get_contents("$api_url/api/channel_vars?channel=$channel");
+        $response = @file_get_contents("$api_url/channel_vars?channel=$channel");
         break;
         
     case 'hangup':
         $channel = $_POST['channel'] ?? '';
         $data = json_encode(['action' => 'hangup', 'channel' => $channel]);
-        $response = callAPI('POST', "$api_url/api/action", $data);
+        $response = callAPI('POST', "$api_url/action", $data);
         break;
         
     case 'join':
         $channel = $_POST['channel'] ?? '';
         $spy_number = $_POST['spy_number'] ?? '';
         $data = json_encode(['action' => 'join', 'channel' => $channel, 'spy_number' => $spy_number]);
-        $response = callAPI('POST', "$api_url/api/action", $data);
+        $response = callAPI('POST', "$api_url/action", $data);
         break;
         
     default:
